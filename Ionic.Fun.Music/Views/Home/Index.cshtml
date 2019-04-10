@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    .search {
+        background: #fff;
+        display: flex;
+        border-radius: 8px;
+        border: 1px solid #dfe1e5;
+      
+        border-radius: 24px;
+        z-index: 3;
+        height: 44px;
+        margin: 0 auto;
+        max-width: 482px;
+        margin-top:200px;
+    }
+
+    .input {
+        padding-left: 16px;
+        width: 100%;
+        margin-right: 60px;
+    }
+
+        .input input {
+            background-color: transparent;
+            border: none;
+            margin: 0;
+            padding: 0;
+            color: rgba(0,0,0,.87);
+            word-wrap: break-word;
+            outline: none;
+            display: flex;
+            flex: 100%;
+            -webkit-tap-highlight-color: transparent;
+            margin-top: 5px;
+            font: 16px arial,sans-serif;
+            line-height: 34px;
+            height: 34px !important;
+            width:100%;
+        }
+
+    .icon {
+        width: 60px;
+        background-color: #0086F5;
+        border-bottom-right-radius: 100px;
+        border-top-right-radius: 100px;
+        height: 44px;
+        margin-top: -1px;
+    }
+</style>
+<div class="text-center">
+    <div class="search box-shadow">
+        <div class="input">
+            <input id="keywords" />
+        </div>
+        <div class="icon " onclick="to_search()"></div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    function to_search() {
+        location.href = "/home/search?keyword="+$("#keywords").val();
+    }
+</script>

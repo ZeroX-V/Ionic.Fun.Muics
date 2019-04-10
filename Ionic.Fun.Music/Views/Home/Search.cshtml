@@ -1,0 +1,54 @@
+﻿@using Ionic.Fun.MusicSearch.Model;
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<ul class="music-list ">
+    @{
+        var list = Model as List<MergedSong>;
+        foreach (var item in list)
+        {
+            <li>
+                <div class="float-left">
+                    <label class="title">@item.name</label>
+                    <span class="singer">@item.singer</span>
+                    <div class="note">
+                        <span>@item.source</span>
+                    </div>
+                </div>
+                <div class="dropdown float-right">
+                    <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        播放
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @{
+                            foreach (var item2 in item.items)
+                            {
+                                if (!string.IsNullOrEmpty(item2.url))
+                                {
+                                    <a class="dropdown-item" onclick="play('@item2.url')" href="javascript:void()">@item2.source</a>
+                                }
+
+
+                            }
+                        }
+
+                    </div>
+                </div>
+
+
+
+
+            </li>
+        }
+
+    }
+
+</ul>
+<audio style="display: none;" id="palyer" autoplay controls="controls"></audio>
+<script type="text/javascript">
+    function play(src) {
+        $("#palyer").prop("src", src);
+    }
+</script>
